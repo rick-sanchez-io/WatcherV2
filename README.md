@@ -5,8 +5,8 @@ Smart x-ui traffic watcher with safe startup bootstrap
 
 # Important Warning
 
-**The only official version of this script is available through this GitHub page.
-Do not use other versions shared in different channels or hosted on other GitHub pages, as the risk of scams and theft is extremely high** ⚠️
+**The only official version of watcherV2 is available through this GitHub page.
+Do not use other versions shared in different telegram channels or hosted on other GitHub pages, as the risk of scams and theft is extremely high** ⚠️
 
 ---
 
