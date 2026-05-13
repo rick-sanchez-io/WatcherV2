@@ -16,7 +16,7 @@ A smart traffic watcher for x-ui panels (only).
 
 the watcherV2 is here. 
 
-This watcherV2 watches your x-ui traffic database directly and restarts xray when a user actually exceeds their total quota.
+it watches your x-ui traffic database directly and restarts xray when a client exceeds their total quota.
 
 ---
 
@@ -27,7 +27,7 @@ This watcherV2 watches your x-ui traffic database directly and restarts xray whe
 * Colored logs
 * restarts xray instead of the x-ui
 * Lightweight polling
-* Expired users removed from main loop
+* Expired Clients removed from main loop
 * Automatic recheck system
 * Doesn't spam xray restarts
 
@@ -47,7 +47,7 @@ It checks:
 used traffic > total quota
 ```
 
-If some poor guy exceeded the quota:
+If a client exceeded the quota:
 
 * user gets marked as expired
 * xray gets restarted
@@ -59,7 +59,7 @@ Simple. Efficient.
 
 # Installation
 
-## Method 1 :
+## Method 1 — Screen :
 
 
 ### 1. Download the Script
