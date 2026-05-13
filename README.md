@@ -17,9 +17,9 @@ And before you ask:
 
 ---
 
-# Features of new watcher
+# Features of the watcherV2
 
-* Unlimited users support (`total = 0`)
+* wont crack under high pressure 
 * Safe startup bootstrap
 * Colored logs
 * restarts xray instead of the x-ui
