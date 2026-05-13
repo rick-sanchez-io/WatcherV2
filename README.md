@@ -16,7 +16,7 @@ A smart traffic watcher for x-ui panels (only).
 
 the watcherV2 is here. 
 
-This thing watches your x-ui traffic database directly and only restarts xray when a user actually exceeds their total quota.
+This watcherV2 watches your x-ui traffic database directly and restarts xray when a user actually exceeds their total quota.
 
 ---
 
