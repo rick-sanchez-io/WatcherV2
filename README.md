@@ -18,11 +18,6 @@ the watcherV2 is here.
 
 This thing watches your x-ui traffic database directly and only restarts xray when a user actually exceeds their total quota.
 
-And before you ask:
-
-* No, startup won't trigger 500 xray kills if your panel already had expired users.
-* Yes, logs are colored because staring at gray terminal garbage is depressing.
-
 ---
 
 # Features of the watcherV2
@@ -34,7 +29,7 @@ And before you ask:
 * Lightweight polling
 * Expired users removed from main loop
 * Automatic recheck system
-* Doesn't spam xray restarts like an idiot
+* Doesn't spam xray restarts
 
 ---
 
