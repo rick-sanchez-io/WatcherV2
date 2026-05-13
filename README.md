@@ -61,7 +61,7 @@ Simple. Efficient.
 
 
 ### 1. Download the Script
-you can download watcherV2 from Releases.
+you can download watcherV2 from [Releases](https://github.com/rick-sanchez-io/WatcherV2/releases/tag/v2.0.0)
 
 ---
 
@@ -114,7 +114,7 @@ After=network.target
 
 [Service]
 Type=simple
-ExecStart=/usr/bin/python3 /root/watcher.py
+ExecStart=/usr/bin/python3 /root/watcher2.py
 Restart=always
 RestartSec=3
 
@@ -161,7 +161,8 @@ journalctl -u watcher -f
 
 # Why is this script effective?
 
-*Based on the tests performed, this script has an error margin of around 1 to 10 MB per user, and in the worst-case scenario, around 20 to 30 MB.
-It can easily be used for panels with a large number of users.*
+Based on the tests performed, this script has an error margin of around 1 to 10 MB per user, and in the worst-case scenario, around 20 to 30 MB.
+It can easily be used for panels with a large number of users.
 
 ![banner](assets/Screenshot_2026-05-13-23-22-53-914_com.server.auditor.ssh.client~2.jpg)
+*as you can see in the image , the error rate was 68169 bytes ( 68.169 KB )*
