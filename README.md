@@ -164,4 +164,4 @@ journalctl -u watcher -f
 *Based on the tests performed, this script has an error margin of around 1 to 10 MB per user, and in the worst-case scenario, around 20 to 30 MB.
 It can easily be used for panels with a large number of users.*
 
-![banner]
+![banner](assets/Screenshot_2026-05-13-23-22-53-914_com.server.auditor.ssh.client~2.jpg)
