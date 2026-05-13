@@ -67,9 +67,7 @@ you can download watcherV2 from [Releases](https://github.com/rick-sanchez-io/Wa
 
 ### 2. upload watcher to your server
 
-Example:
-
-upload it to :
+for Example upload it to :
 ```bash
 /root/watcher2.py
 ```
@@ -91,6 +89,11 @@ sudo python3 watcher2.py
 
 *If you see colored logs, Congratulations.*
 
+### 5. Detach from the screen
+
+```bash
+ctrl + a + d
+```
 ---
 
 ## Method 2 — Systemd Service
