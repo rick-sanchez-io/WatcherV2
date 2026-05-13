@@ -14,9 +14,7 @@ Do not use other versions shared in different telegram channels or hosted on oth
 
 A smart traffic watcher for x-ui panels (only).
 
-the watcherV2 is here. 
-
-it watches your x-ui traffic database directly and restarts xray when a client exceeds their total quota.
+watcherV2 is an open source project that watches your x-ui traffic database directly and restarts xray when a client exceeds their total quota.
 
 ---
 
