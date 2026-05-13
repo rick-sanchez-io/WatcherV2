@@ -1,2 +1,164 @@
 # WatcherV2
 Smart x-ui traffic watcher with safe startup bootstrap
+
+
+# x-ui Expire Watcher
+
+A smart traffic watcher for x-ui panels (only).
+
+the watcherV2 is here. 
+
+This thing watches your x-ui traffic database directly and only restarts xray when a user actually exceeds their total quota.
+
+And before you ask:
+
+* No, startup won't trigger 500 xray kills if your panel already had expired users.
+* Yes, logs are colored because staring at gray terminal garbage is depressing.
+
+---
+
+# Features of new watcher
+
+* Unlimited users support (`total = 0`)
+* Safe startup bootstrap
+* Colored logs
+* restarts xray instead of the x-ui
+* Lightweight polling
+* Expired users removed from main loop
+* Automatic recheck system
+* Doesn't spam xray restarts like an idiot
+
+---
+
+# How This Thing Works
+
+The script reads this database:
+
+```bash
+/etc/x-ui/x-ui.db
+```
+
+It checks:
+
+```text
+used traffic > total quota
+```
+
+If some poor guy exceeded the quota:
+
+* user gets marked as expired
+* xray gets restarted ONCE
+* expired users stop getting spam-checked
+* every 60 seconds expired users get rechecked
+
+Simple. Efficient.
+
+---
+
+# Installation
+
+## Method 1 :
+
+
+### 1. Download the Script
+you can download watcherV2 from Releases.
+
+---
+
+### 2. upload watcher to your server
+
+Example:
+
+upload it to :
+```bash
+/root/watcher2.py
+```
+
+---
+
+### 3. Make a screen
+
+```bash
+screen -S watcher
+```
+---
+
+### 4. start watcher
+
+```bash
+sudo python3 watcher2.py
+```
+
+If you see colored logs
+
+Congratulations.
+
+---
+
+## Method 2 — Systemd Service
+
+Because running scripts manually forever is caveman behavior.
+
+---
+
+### 1. Create Service File
+
+```bash
+nano /etc/systemd/system/watcher.service
+```
+
+Paste this:
+
+```ini
+[Unit]
+Description=x-ui Expire Watcher
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/python3 /root/watcher.py
+Restart=always
+RestartSec=3
+
+[Install]
+WantedBy=multi-user.target
+```
+
+---
+
+### 2. Reload systemd
+
+```bash
+systemctl daemon-reload
+```
+
+---
+
+### 3. Enable Service
+
+```bash
+systemctl enable watcher
+```
+
+---
+
+## 4. Start Service
+
+```bash
+systemctl start watcher
+```
+
+---
+
+## 5. View Logs
+
+```bash
+journalctl -u watcher -f
+```
+
+
+Now the server babysits the watcher for you.
+
+---
+
+Just don't blame me if your VPS catches fire because you edited random parts without understanding what the hell you're doing.
