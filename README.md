@@ -3,6 +3,13 @@ Smart x-ui traffic watcher with safe startup bootstrap
 
 ![banner](assets/Screenshot_2026-05-13-20-45-26-489_com.android.chrome~2.jpg)
 
+# Important Warning
+
+**The only official version of this script is available through this GitHub page.
+Do not use other versions shared in different channels or hosted on other GitHub pages, as the risk of scams and theft is extremely high** ⚠️
+
+---
+
 # x-ui Expire Watcher
 
 A smart traffic watcher for x-ui panels (only).
@@ -159,7 +166,9 @@ journalctl -u watcher -f
 
 ---
 
-**Just don't blame me if your VPS catches fire because you edited random parts without understanding what the hell you're doing.**
+# Why is this script effective?
 
+*Based on the tests performed, this script has an error margin of around 1 to 10 MB per user, and in the worst-case scenario, around 20 to 30 MB.
+It can easily be used for panels with a large number of users.*
 
-Thank you, Kindly, Rick.
+![banner]
