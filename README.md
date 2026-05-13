@@ -1,7 +1,7 @@
 # WatcherV2
 Smart x-ui traffic watcher with safe startup bootstrap
 
-![banner] (Screenshot_2026-05-13-20-45-26-489_com.android.chrome~2.jpg)
+![banner](Screenshot_2026-05-13-20-45-26-489_com.android.chrome~2.jpg)
 
 # x-ui Expire Watcher
 
