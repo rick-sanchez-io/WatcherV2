@@ -47,11 +47,10 @@ used traffic > total quota
 If some poor guy exceeded the quota:
 
 * user gets marked as expired
-* xray gets restarted ONCE
-* expired users stop getting spam-checked
-* every 60 seconds expired users get rechecked
+* xray gets restarted
+* expired user will be disconnected.
 
-*Simple. Efficient.*
+Simple. Efficient.
 
 ---
 
