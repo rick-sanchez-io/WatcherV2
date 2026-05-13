@@ -51,7 +51,7 @@ If some poor guy exceeded the quota:
 * expired users stop getting spam-checked
 * every 60 seconds expired users get rechecked
 
-Simple. Efficient.
+*Simple. Efficient.*
 
 ---
 
@@ -89,15 +89,13 @@ screen -S watcher
 sudo python3 watcher2.py
 ```
 
-If you see colored logs
-
-Congratulations.
+*If you see colored logs, Congratulations.*
 
 ---
 
 ## Method 2 — Systemd Service
 
-Because running scripts manually forever is caveman behavior.
+*Because running scripts manually forever is caveman behavior.*
 
 ---
 
@@ -142,7 +140,7 @@ systemctl enable watcher
 
 ---
 
-## 4. Start Service
+### 4. Start Service
 
 ```bash
 systemctl start watcher
@@ -150,15 +148,18 @@ systemctl start watcher
 
 ---
 
-## 5. View Logs
+### 5. View Logs
 
 ```bash
 journalctl -u watcher -f
 ```
 
 
-Now the server babysits the watcher for you.
+*Now the server babysits the watcher for you.*
 
 ---
 
-Just don't blame me if your VPS catches fire because you edited random parts without understanding what the hell you're doing.
+**Just don't blame me if your VPS catches fire because you edited random parts without understanding what the hell you're doing.**
+
+
+Thank you, Kindly, Rick.
