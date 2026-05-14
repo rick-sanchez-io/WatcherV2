@@ -57,7 +57,7 @@ Simple. Efficient.
 
 # Installation
 
-## Method 1 — Screen :
+## Screen :
 
 
 ### 1. Download the Script
@@ -94,72 +94,6 @@ sudo python3 watcher2.py
 ```bash
 ctrl + a + d
 ```
----
-
-## Method 2 — Systemd Service
-
-*Because running scripts manually forever is caveman behavior.*
-
----
-
-### 1. Create Service File
-
-```bash
-nano /etc/systemd/system/watcher.service
-```
-
-Paste this:
-
-```ini
-[Unit]
-Description=x-ui Expire Watcher
-After=network.target
-
-[Service]
-Type=simple
-ExecStart=/usr/bin/python3 /root/watcher2.py
-Restart=always
-RestartSec=3
-
-[Install]
-WantedBy=multi-user.target
-```
-
----
-
-### 2. Reload systemd
-
-```bash
-systemctl daemon-reload
-```
-
----
-
-### 3. Enable Service
-
-```bash
-systemctl enable watcher
-```
-
----
-
-### 4. Start Service
-
-```bash
-systemctl start watcher
-```
-
----
-
-### 5. View Logs
-
-```bash
-journalctl -u watcher -f
-```
-
-
-*Now the server babysits the watcher for you.*
-
 ---
 
 # Why is this script effective?
