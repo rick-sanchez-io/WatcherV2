@@ -60,39 +60,36 @@ Simple. Efficient.
 ## Screen :
 
 
-### 1. Download the Script
-you can download watcherV2 from [Releases](https://github.com/rick-sanchez-io/WatcherV2/releases/tag/v2.0.0)
-
----
-
-### 2. upload watcher to your server
-
-for Example upload it to :
+### 1. Clone the repository
 ```bash
-/root/watcher2.py
+git clone https://github.com/rick-sanchez-io/WatcherV2.git
+cd WatcherV2
 ```
 
 ---
 
-### 3. Make a screen
+### 2. Run installer
 
 ```bash
-screen -S watcher
-```
----
-
-### 4. start watcher
-
-```bash
-sudo python3 watcher2.py
+sudo bash scripts/install.sh
 ```
 
-*If you see colored logs, Congratulations.*
+The installer will:
 
-### 5. Detach from the screen
+* copy the watcher script to `/opt/watcherV2/watcher2.py`
+* create `watcher2.service` in systemd
+* start and enable the service automatically
+
+### 3. Check service status
 
 ```bash
-ctrl + a + d
+systemctl status watcher2.service
+```
+
+### 4. View live logs
+
+```bash
+journalctl -u watcher2.service -f
 ```
 ---
 

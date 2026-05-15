@@ -4,11 +4,10 @@ import time
 from typing import Iterable, List, Optional, Sequence, Set, Tuple
 
 DB_PATH = "/etc/x-ui/x-ui.db"
-CHECK_INTERVAL = 1  # seconds
-RECHECK_INTERVAL = 60  # seconds; expired users are checked again only from time to time
+CHECK_INTERVAL = 1
+RECHECK_INTERVAL = 60
 
 
-# کاربرهایی که از سقف رد شده‌اند و فعلاً نباید در حلقه‌ی اصلی خوانده شوند
 expired_users: Set[str] = set()
 _last_expired_recheck = 0.0
 _bootstrapped = False
@@ -22,13 +21,6 @@ def read_clients(
     include_emails: Optional[Iterable[str]] = None,
     exclude_emails: Optional[Iterable[str]] = None,
 ) -> List[Tuple[str, float, float]]:
-    """
-    از دیتابیس می‌خواند.
-
-    - اگر include_emails داده شود، فقط همان کاربران خوانده می‌شوند.
-    - اگر exclude_emails داده شود، آن کاربران از نتیجه حذف می‌شوند.
-    - اگر هیچ‌کدام داده نشود، همه‌ی کاربران خوانده می‌شوند.
-    """
     include_list = list(include_emails or [])
     exclude_list = list(exclude_emails or [])
 
@@ -53,7 +45,6 @@ def read_clients(
 
 
 def kill_xray() -> None:
-    # فقط یک‌بار xray را کیل می‌کند
     subprocess.run(["pkill", "-f", "xray"], check=True)
 
 
@@ -61,7 +52,6 @@ def _is_unlimited(total: float) -> bool:
     return total <= 0
 
 
-# رنگ‌های ANSI فقط برای ظاهر لاگ
 _RESET = "[0m"
 _DIM = "[2m"
 _CYAN = "[36m"
@@ -95,12 +85,10 @@ def process_once(
     killer=kill_xray,
     now_fn=time.monotonic,
 ) -> None:
-    """یک چرخه‌ی پردازش را اجرا می‌کند. برای تست هم قابل استفاده است."""
     global _last_expired_recheck, _bootstrapped
 
     now = now_fn()
 
-    # کاربران فعال (غیراکسپایر) را می‌خوانیم.
     rows = reader(exclude_emails=expired_users)
 
     newly_expired_users = []
@@ -108,7 +96,6 @@ def process_once(
     for email, total, used in rows:
         log(f"{email} | total: {total} | used: {used}")
 
-        # total=0 یعنی نامحدود؛ نباید منقضی شود و نباید xray را کیل کند
         if _is_unlimited(total):
             if email in expired_users:
                 expired_users.discard(email)
@@ -117,12 +104,10 @@ def process_once(
                 log(f"[INFO] {email} is unlimited (total={total}); skipping limit check.")
             continue
 
-        # فقط وقتی برای اولین بار از سقف رد شد، mark می‌شود
         if used > total and email not in expired_users:
             newly_expired_users.append((email, total, used))
             expired_users.add(email)
 
-    # دفعه‌ی اول، فقط state را bootstrap کن و هیچ killی انجام نده
     if not _bootstrapped:
         _bootstrapped = True
         _last_expired_recheck = now
@@ -138,7 +123,6 @@ def process_once(
         killer()
         log("[WARN] xray killed.")
 
-    # کاربران منقضی‌شده را فقط هر چند وقت یک‌بار دوباره بررسی کن
     if expired_users and now - _last_expired_recheck >= RECHECK_INTERVAL:
         rows = reader(include_emails=expired_users)
         restored_users = []
@@ -146,7 +130,6 @@ def process_once(
         for email, total, used in rows:
             log(f"[RECHECK] {email} | total: {total} | used: {used}")
 
-            # اگر در recheck هم total=0 شد، آن کاربر نامحدود است
             if _is_unlimited(total) or used <= total:
                 restored_users.append(email)
 
